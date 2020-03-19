@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div className="App">
     NEWS APP
-    {data.map(article => (
+    {data.map(article  => (
       //each of the articles should display:
       //image
       //title
