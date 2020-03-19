@@ -25,12 +25,12 @@ const App = () => {
       //image
       //title
       //URL link within the title.
-      <div>
+      <div key={article.publishedAt}>
         <img src={article.urlToImage} />
-        <Link to={article.url} key={article.publishedAt}>{article.title}</Link>
+        <Link to={article.url}>{article.title}</Link>
       </div>
     ))}
-    </div>
+    </div> 
   );
 }
 
