@@ -26,6 +26,10 @@ const NewsTitle = styled(Link)`
   color: black; 
   text-decoration: none; 
 `
+const NewsDescription = styled.p`
+    fontSize: 10px; 
+    color: black; 
+`
 
 const BigHeadline = () => {
     const [data, setData] = useState([]);
@@ -49,6 +53,11 @@ const BigHeadline = () => {
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
                     </section>
                     <NewsImg src={article.urlToImage} />
+                    <section>
+                        <NewsDescription>
+                            {article.description}
+                        </NewsDescription>
+                    </section>
                 </NewsCard>
             ))}
         </div>

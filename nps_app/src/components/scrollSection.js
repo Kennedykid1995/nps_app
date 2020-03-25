@@ -21,6 +21,10 @@ const NewsTitle = styled(Link)`
   color: black; 
   text-decoration: none; 
 `
+const NewsDescription = styled.p`
+    fontSize: 10px; 
+    color: black; 
+`
 
 const ScrollSection = () => {
     const [data, setData] = useState([]);
@@ -42,6 +46,11 @@ const ScrollSection = () => {
                 <NewsCard key={article.publishedAt}>
                     <section>
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
+                    </section>
+                    <section>
+                        <NewsDescription>
+                            {article.description}
+                        </NewsDescription>
                     </section>
                 </NewsCard>
             ))}
