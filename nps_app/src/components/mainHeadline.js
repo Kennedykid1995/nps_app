@@ -45,10 +45,10 @@ const MainHeadline = () => {
                 //title
                 //URL link within the title.
                 <NewsCard key={article.publishedAt}>
-                    <NewsImg src={article.urlToImage} />
-                    <section>
+                <section>
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
                     </section>
+                    <NewsImg src={article.urlToImage} />
                 </NewsCard>
             ))}
         </div>
