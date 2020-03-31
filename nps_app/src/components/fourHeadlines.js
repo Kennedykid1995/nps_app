@@ -5,23 +5,33 @@ import styled from 'styled-components';
 
 const url = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=26cf207a661b4974a24e4a4ae5259757'
 
+const Sec = styled.div`
+    margin-top: 50px; 
+`
 const NewsCard = styled.div`
   width: auto; 
-  border: 1px solid blue;
   display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center; 
   text-align: left; 
-  margin: 10px; 
+  margin: 10px 0; 
 `
 const NewsTitle = styled(Link)`
-  fontSize: 20px;
-  fontWeight: bold;
+  font-size: 20px;
+  font-weight: bold;
   color: black; 
   text-decoration: none; 
 `
-const NewsDescription = styled.p`
-    color: black; 
+const ImgSec = styled.section`
+    width: 45%;
+`
+const NewsImg = styled.img`
+    width: 100%; 
+`
+const NewsSec = styled.section`
+    width: 55%; 
+    margin-left: 5px;  
 `
 
 const FourHeadlines = () => {
@@ -35,22 +45,22 @@ const FourHeadlines = () => {
             });
     }, [])
     return (
-        <div>
+        <Sec>
             {data.slice(1, 5).map(article => (
                 //each of the articles should display:
                 //image
                 //title
                 //URL link within the title.
                 <NewsCard key={article.publishedAt}>
-                    <section>
+                    <ImgSec>
+                        <NewsImg src={article.urlToImage} />
+                    </ImgSec>
+                    <NewsSec>
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
-                    </section>
-                    <section>
-                        <NewsDescription>{article.description}</NewsDescription>
-                    </section>
+                    </NewsSec>
                 </NewsCard>
             ))}
-            </div>
+        </Sec>
     )
 
 }

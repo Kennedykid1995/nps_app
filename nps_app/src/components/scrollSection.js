@@ -21,6 +21,9 @@ const NewsTitle = styled(Link)`
   color: black; 
   text-decoration: none; 
 `
+const NewsImg = styled.img`
+    width: 100%; 
+`
 const NewsDescription = styled.p`
     fontSize: 10px; 
     color: black; 
@@ -44,14 +47,12 @@ const ScrollSection = () => {
                 //title
                 //URL link within the title.
                 <NewsCard key={article.publishedAt}>
-                    <section>
+                    <div>
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
-                    </section>
-                    <section>
                         <NewsDescription>
                             {article.description}
                         </NewsDescription>
-                    </section>
+                    </div>
                 </NewsCard>
             ))}
         </div>
