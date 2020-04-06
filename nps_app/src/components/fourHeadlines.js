@@ -14,7 +14,7 @@ const SecCol = styled.div`
  
 `
 const NewsCardCol = styled.div`
-  width: auto; 
+  width: 50%; 
   display: flex; 
   flex-direction: column; 
   align-items: flex-start; 
@@ -47,17 +47,18 @@ const ImgSecTop = styled.section`
     width: 100%;
 `
 const ImgSec = styled.section`
-    width: 45%;
+    width: 50%;
 `
 const NewsImgTop = styled.img`
-    width: 100%; 
+    width: 100%;
+    overflow: hidden;
 `
 const NewsImg = styled.img`
     width: 100%; 
 `
 const NewsSecTop = styled.section`
     width: 100%; 
-    margin-left: 5px;  
+    margin-left: 5px;
 `
 const NewsSec = styled.section`
     width: 55%; 
@@ -75,38 +76,38 @@ const FourHeadlines = () => {
     }, [])
     return (
         <div>
-        <SecCol>
-            {data.slice(1, 3).map(article => (
-                //each of the articles should display:
-                //image
-                //title
-                //URL link within the title.
-                <NewsCardCol key={article.publishedAt}>
-                    <ImgSecTop>
-                        <NewsImgTop src={article.urlToImage} />
-                    </ImgSecTop>
-                    <NewsSecTop>
-                        <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
-                    </NewsSecTop>
-                </NewsCardCol>
-            ))}
-        </SecCol>
-        <Sec>
-            {data.slice(3, 5).map(article => (
-                //each of the articles should display:
-                //image
-                //title
-                //URL link within the title.
-                <NewsCard key={article.publishedAt}>
-                    <ImgSec>
-                        <NewsImg src={article.urlToImage} />
-                    </ImgSec>
-                    <NewsSec>
-                        <NewsTitle to={article.url}>{article.title}</NewsTitle>
-                    </NewsSec>
-                </NewsCard>
-            ))}
-        </Sec>
+            <SecCol>
+                {data.slice(1, 3).map(article => (
+                    //each of the articles should display:
+                    //image
+                    //title
+                    //URL link within the title.
+                    <NewsCardCol key={article.publishedAt}>
+                        <ImgSecTop>
+                            <NewsImgTop src={article.urlToImage} />
+                        </ImgSecTop>
+                        <NewsSecTop>
+                            <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
+                        </NewsSecTop>
+                    </NewsCardCol>
+                ))}
+            </SecCol>
+            <Sec>
+                {data.slice(3, 5).map(article => (
+                    //each of the articles should display:
+                    //image
+                    //title
+                    //URL link within the title.
+                    <NewsCard key={article.publishedAt}>
+                        <ImgSec>
+                            <NewsImg src={article.urlToImage} />
+                        </ImgSec>
+                        <NewsSec>
+                            <NewsTitle to={article.url}>{article.title}</NewsTitle>
+                        </NewsSec>
+                    </NewsCard>
+                ))}
+            </Sec>
         </div>
     )
 

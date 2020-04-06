@@ -5,28 +5,35 @@ import styled from 'styled-components'
 
 const url = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=26cf207a661b4974a24e4a4ae5259757'
 
-const NewsCard = styled.div`
-  width: auto; 
-  height: auto; 
-  border: 1px solid pink;
+const SecCol = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+`
+const NewsCardCol = styled.div`
+  width: 45%; 
   display: flex; 
   flex-direction: column; 
-  justify-content: center; 
+  align-items: flex-start; 
   text-align: left; 
-  margin: 10px; 
+  padding: 10px;
 `
-const NewsTitle = styled(Link)`
-  fontSize: 20px;
-  fontWeight: bold;
+const NewsTitleTop = styled(Link)`
+  font-size: 20px;
+  font-weight: bold;
   color: black; 
   text-decoration: none; 
 `
-const NewsImg = styled.img`
-    width: 100%; 
+const ImgSecTop = styled.section`
+    width: 100%;
 `
-const NewsDescription = styled.p`
-    fontSize: 10px; 
-    color: black; 
+const NewsImgTop = styled.img`
+    width: 100%;
+    overflow: hidden;
+`
+const NewsSecTop = styled.section`
+    width: 100%; 
+    margin-left: 5px;
 `
 
 const ScrollSection = () => {
@@ -40,22 +47,22 @@ const ScrollSection = () => {
             });
     }, [])
     return (
-        <div>
+        <SecCol>
             {data.slice(6).map(article => (
                 //each of the articles should display:
                 //image
                 //title
                 //URL link within the title.
-                <NewsCard key={article.publishedAt}>
-                    <div>
-                        <NewsTitle to={article.url}>{article.title}</NewsTitle>
-                        <NewsDescription>
-                            {article.description}
-                        </NewsDescription>
-                    </div>
-                </NewsCard>
+                <NewsCardCol key={article.publishedAt}>
+                        <ImgSecTop>
+                            <NewsImgTop src={article.urlToImage} />
+                        </ImgSecTop>
+                        <NewsSecTop>
+                            <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
+                        </NewsSecTop>
+                    </NewsCardCol>
             ))}
-        </div>
+        </SecCol>
     )
 
 }
