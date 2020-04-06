@@ -8,27 +8,30 @@ const url = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=26cf207a661b4
 const NewsCard = styled.div`
   width: auto; 
   height: auto; 
-  border: 1px solid red;
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
   text-align: left; 
-  margin: 10px; 
 `
-const NewsImg = styled.img`
-  width: 225px; 
-  border: 1 px solid red;
-  padding: 5px; 
+const NewsImg = styled.img` 
+    width: 100%; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
 `
 const NewsTitle = styled(Link)`
-  fontSize: 20px;
-  fontWeight: bold;
+  font-size: 20px;
+  font-weight: bold;
   color: black; 
   text-decoration: none; 
 `
-const NewsDescription = styled.p`
-    fontSize: 10px; 
-    color: black; 
+const NewsDescription= styled.p`
+    font-size: 15px; 
+    color: black;
+`
+const GrayBox = styled.section`
+    background: #e8e8e8; 
+    widht: 100%; 
+    padding: 10px; 
 `
 
 const BigHeadline = () => {
@@ -53,11 +56,11 @@ const BigHeadline = () => {
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
                     </section>
                     <NewsImg src={article.urlToImage} />
-                    <section>
+                    <GrayBox>
                         <NewsDescription>
                             {article.description}
                         </NewsDescription>
-                    </section>
+                    </GrayBox>
                 </NewsCard>
             ))}
         </div>

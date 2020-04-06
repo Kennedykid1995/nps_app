@@ -6,8 +6,22 @@ import styled from 'styled-components';
 const url = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=26cf207a661b4974a24e4a4ae5259757'
 
 const Sec = styled.div`
-    margin-top: 50px; 
+
 `
+const SecCol = styled.div`
+    display: flex;
+    flex-direction: row;
+ 
+`
+const NewsCardCol = styled.div`
+  width: auto; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  text-align: left; 
+  padding: 10px;
+`
+
 const NewsCard = styled.div`
   width: auto; 
   display: flex; 
@@ -15,7 +29,13 @@ const NewsCard = styled.div`
   justify-content: space-between; 
   align-items: center; 
   text-align: left; 
-  margin: 10px 0; 
+  padding: 10px; 
+`
+const NewsTitleTop = styled(Link)`
+  font-size: 20px;
+  font-weight: bold;
+  color: black; 
+  text-decoration: none; 
 `
 const NewsTitle = styled(Link)`
   font-size: 20px;
@@ -23,17 +43,26 @@ const NewsTitle = styled(Link)`
   color: black; 
   text-decoration: none; 
 `
+const ImgSecTop = styled.section`
+    width: 100%;
+`
 const ImgSec = styled.section`
     width: 45%;
 `
+const NewsImgTop = styled.img`
+    width: 100%; 
+`
 const NewsImg = styled.img`
     width: 100%; 
+`
+const NewsSecTop = styled.section`
+    width: 100%; 
+    margin-left: 5px;  
 `
 const NewsSec = styled.section`
     width: 55%; 
     margin-left: 5px;  
 `
-
 const FourHeadlines = () => {
     const [data, setData] = useState([]);
 
@@ -45,8 +74,25 @@ const FourHeadlines = () => {
             });
     }, [])
     return (
+        <div>
+        <SecCol>
+            {data.slice(1, 3).map(article => (
+                //each of the articles should display:
+                //image
+                //title
+                //URL link within the title.
+                <NewsCardCol key={article.publishedAt}>
+                    <ImgSecTop>
+                        <NewsImgTop src={article.urlToImage} />
+                    </ImgSecTop>
+                    <NewsSecTop>
+                        <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
+                    </NewsSecTop>
+                </NewsCardCol>
+            ))}
+        </SecCol>
         <Sec>
-            {data.slice(1, 5).map(article => (
+            {data.slice(3, 5).map(article => (
                 //each of the articles should display:
                 //image
                 //title
@@ -61,6 +107,7 @@ const FourHeadlines = () => {
                 </NewsCard>
             ))}
         </Sec>
+        </div>
     )
 
 }
