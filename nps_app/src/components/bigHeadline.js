@@ -34,6 +34,7 @@ const GrayBox = styled.section`
     padding: 10px; 
 `
 
+
 const BigHeadline = () => {
     const [data, setData] = useState([]);
 
@@ -52,9 +53,9 @@ const BigHeadline = () => {
                 //title
                 //URL link within the title.
                 <NewsCard key={article.publishedAt}>
-                    <section>
+                    <GrayBox>
                         <NewsTitle to={article.url}>{article.title}</NewsTitle>
-                    </section>
+                    </GrayBox>
                     <NewsImg src={article.urlToImage} />
                     <GrayBox>
                         <NewsDescription>
