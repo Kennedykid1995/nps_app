@@ -35,6 +35,14 @@ const NewsSecTop = styled.section`
     width: 100%; 
     margin-left: 5px;
 `
+const TimeContainer = styled.div`
+    align-self: flex-end; 
+`
+const Publish = styled.p`
+    font-size: 10px; 
+    font-weight: bold;
+    color: black; 
+`
 
 const ScrollSection = () => {
     const [data, setData] = useState([]);
@@ -54,13 +62,16 @@ const ScrollSection = () => {
                 //title
                 //URL link within the title.
                 <NewsCardCol key={article.publishedAt}>
-                        <ImgSecTop>
-                            <NewsImgTop src={article.urlToImage} />
-                        </ImgSecTop>
-                        <NewsSecTop>
-                            <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
-                        </NewsSecTop>
-                    </NewsCardCol>
+                    <ImgSecTop>
+                        <NewsImgTop src={article.urlToImage} />
+                    </ImgSecTop>
+                    <NewsSecTop>
+                        <NewsTitleTop to={article.url}>{article.title}</NewsTitleTop>
+                    </NewsSecTop>
+                    <TimeContainer>
+                        <Publish>{article.publishedAt}</Publish>
+                    </TimeContainer>
+                </NewsCardCol>
             ))}
         </SecCol>
     )
